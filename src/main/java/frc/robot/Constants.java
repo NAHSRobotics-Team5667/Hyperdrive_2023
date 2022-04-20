@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.util.Units;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -14,13 +16,32 @@ package frc.robot;
  */
 public final class Constants {
     public final static class DriveConstants {
-        public final static int kFrontLeftDrive = -1; // placeholder
-        public final static int kFrontLeftSwerve = -1; // placeholder
-        public final static int kFrontRightDrive = -1; // placeholder
-        public final static int kFrontRightSwerve = -1; // placeholder
-        public final static int kRearLeftDrive = -1; // placeholder
-        public final static int kRearLeftSwerve = -1; // placeholder
-        public final static int kRearRightDrive = -1; // placeholder
-        public final static int kRearRightSwerve = -1; // placeholder
+        public final static int kFrontLeftDriveId = -1; // placeholder
+        public final static int kFrontLeftSwerveId = -1; // placeholder
+        public final static int kFrontRightDriveId = -1; // placeholder
+        public final static int kFrontRightSwerveId = -1; // placeholder
+        public final static int kRearLeftDriveId = -1; // placeholder
+        public final static int kRearLeftSwerveId = -1; // placeholder
+        public final static int kRearRightDriveId = -1; // placeholder
+        public final static int kRearRightSwerveId = -1; // placeholder
+
+        public final static int absoluteEncoderCpr = 1024;
+
+        public final static double kSwerveGearing = -1; // placeholder
+        public final static double kAbsoluteEncoderGearing = -1; // placeholder
+        public final static double kDriveGearing = 1 / 6.54;
+        public final static double kWheelDiameter = Units.inchesToMeters(4);
+
+        public final static double kP = -1; // placeholder
+        public final static double kI = -1; // placeholder
+        public final static double kD = -1; // placeholder
+
+        public static double ticksToRadians(double ticks) {
+            return ticks * ((2 * Math.PI) / (absoluteEncoderCpr / kAbsoluteEncoderGearing));
+        }
+
+        public static double ticksToMeters(double ticks) {
+            return ticks * ((absoluteEncoderCpr / kAbsoluteEncoderGearing) / (kWheelDiameter * Math.PI));
+        }
     }
 }
